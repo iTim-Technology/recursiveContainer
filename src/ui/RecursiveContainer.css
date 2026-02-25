@@ -1,6 +1,18 @@
-/*
-Place your custom CSS here
-*/
-.widget-hello-world {
+.recursive-container {
+    position: relative;
+}
 
+.recursive-container__child {
+    /* Child nodes are rendered directly below parent content.
+       Override in your theme if you want indentation, connecting lines, etc. */
+}
+
+.recursive-container__depth-warning {
+    padding: 4px 8px;
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    color: #856404;
+    font-size: 12px;
+    margin-top: 4px;
 }

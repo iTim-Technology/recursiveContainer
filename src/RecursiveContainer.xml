@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id="itimtechnology.recursivecontainer.RecursiveContainer" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+<widget id="itimtechnology.recursivecontainer.RecursiveContainer" pluginWidget="true" needsEntityContext="true" offlineCapable="false"
         supportedPlatform="Web"
         xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Recursive Container</name>
-    <description>Recursive container</description>
+    <description>Renders a widget tree recursively by following a self-referencing association. Use this widget to display tree structures of unlimited depth.</description>
     <icon/>
     <properties>
         <propertyGroup caption="General">
-            <property key="sampleText" type="string" required="false">
-                <caption>Default value</caption>
-                <description>Sample text input</description>
+            <property key="content" type="widgets" required="false">
+                <caption>Content</caption>
+                <description>The widgets to render for each node in the tree. The context object is the current tree node.</description>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Child data">
+            <property key="childDataSource" type="datasource" isList="false" required="false">
+                <caption>Child object</caption>
+                <description>A datasource that resolves to the child object via a self-referencing association (e.g. TreeNode_Parent/TreeNode). Leave empty to stop recursion at this node.</description>
+            </property>
+            <property key="childContent" type="widgets" required="false" dataSource="childDataSource">
+                <caption>Child content</caption>
+                <description>Drop another Recursive Container here to render the child node. This slot is rendered in the context of the child object.</description>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Safety">
+            <property key="maxDepth" type="integer" defaultValue="25" required="true">
+                <caption>Max depth</caption>
+                <description>Maximum number of recursion levels to prevent infinite loops. Default is 25.</description>
             </property>
         </propertyGroup>
     </properties>

@@ -3,14 +3,18 @@
  * WARNING: All changes made to this file will be overwritten
  * @author Mendix Widgets Framework Team
  */
-import { CSSProperties } from "react";
+import { ComponentType, CSSProperties, ReactNode } from "react";
+import { ListValue, ListWidgetValue } from "mendix";
 
 export interface RecursiveContainerContainerProps {
     name: string;
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
-    sampleText: string;
+    content?: ReactNode;
+    childDataSource?: ListValue;
+    childContent?: ListWidgetValue;
+    maxDepth: number;
 }
 
 export interface RecursiveContainerPreviewProps {
@@ -24,5 +28,8 @@ export interface RecursiveContainerPreviewProps {
     readOnly: boolean;
     renderMode: "design" | "xray" | "structure";
     translate: (text: string) => string;
-    sampleText: string;
+    content: { widgetCount: number; renderer: ComponentType<{ children: ReactNode; caption?: string }> };
+    childDataSource: {} | { caption: string } | { type: string } | null;
+    childContent: { widgetCount: number; renderer: ComponentType<{ children: ReactNode; caption?: string }> };
+    maxDepth: number | null;
 }
