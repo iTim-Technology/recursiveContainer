@@ -2,7 +2,7 @@
   "name": "recursivecontainer",
   "widgetName": "RecursiveContainer",
   "version": "1.0.0",
-  "description": "Recursive container",
+  "description": "Mendix pluggable widget that renders a hierarchical tree structure recursively from a flat list and a parent association.",
   "copyright": "iTim Technology 2026",
   "author": "Tim Misker",
   "engines": {

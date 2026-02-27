@@ -67,13 +67,9 @@ The widget exposes the CSS variable `--recursive-container-children-spacing` on 
 
 After adding this, a **Children spacing** toggle appears in the Design tab of the widget in Studio Pro. Selecting S/M/L sets `--recursive-container-children-spacing` to the corresponding Atlas spacing token. If nothing is selected the indentation is `0`.
 
-## Demo project
-
-[link to sandbox]
-
 ## Issues, suggestions and feature requests
 
-[link to GitHub issues]
+[Open an issue on GitHub](https://github.com/tmisker/recursiveContainer/issues)
 
 ## Development and contribution
 
