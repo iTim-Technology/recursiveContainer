@@ -5,7 +5,7 @@
             <widgetFile path="RecursiveContainer.xml"/>
         </widgetFiles>
         <files>
-            <file path="itimtechnology/recursivecontainer"/>
+            <file path="tech/itim/recursivecontainer"/>
         </files>
     </clientModule>
 </package>

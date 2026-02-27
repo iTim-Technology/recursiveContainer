@@ -4,16 +4,16 @@
  * @author Mendix Widgets Framework Team
  */
 import { ComponentType, CSSProperties, ReactNode } from "react";
-import { ListValue, ListWidgetValue } from "mendix";
+import { ListValue, ListReferenceValue, ListWidgetValue } from "mendix";
 
 export interface RecursiveContainerContainerProps {
     name: string;
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
-    content?: ReactNode;
-    childDataSource?: ListValue;
-    childContent?: ListWidgetValue;
+    datasource: ListValue;
+    content?: ListWidgetValue;
+    parentAssociation?: ListReferenceValue;
     maxDepth: number;
 }
 
@@ -28,8 +28,8 @@ export interface RecursiveContainerPreviewProps {
     readOnly: boolean;
     renderMode: "design" | "xray" | "structure";
     translate: (text: string) => string;
+    datasource: {} | { caption: string } | { type: string } | null;
     content: { widgetCount: number; renderer: ComponentType<{ children: ReactNode; caption?: string }> };
-    childDataSource: {} | { caption: string } | { type: string } | null;
-    childContent: { widgetCount: number; renderer: ComponentType<{ children: ReactNode; caption?: string }> };
+    parentAssociation: string;
     maxDepth: number | null;
 }

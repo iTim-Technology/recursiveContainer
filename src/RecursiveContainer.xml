@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id="itimtechnology.recursivecontainer.RecursiveContainer" pluginWidget="true" needsEntityContext="true" offlineCapable="false"
+<widget id="tech.itim.recursivecontainer.RecursiveContainer" pluginWidget="true" needsEntityContext="false" offlineCapable="false"
         supportedPlatform="Web"
         xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Recursive Container</name>
-    <description>Renders a widget tree recursively by following a self-referencing association. Use this widget to display tree structures of unlimited depth.</description>
-    <icon/>
+    <description>Renders a tree structure recursively. Define the card/content once — the widget repeats it for every node and its children automatically.</description>
+    <studioProCategory>Data containers</studioProCategory>
+    <icon>iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAUklEQVR4nO3ToQ0AIBBDUfZiJ4ZgaCwYRH0vqbjfBEueuD8G+5v7XOcBAGADBLLKPgMAwJlbhV0GAAACaZ4lgDhAFy8DAACBNE8zDtBFb6EC8ABU2gkn9oV3bQAAAABJRU5ErkJggg==</icon>
     <properties>
-        <propertyGroup caption="General">
-            <property key="content" type="widgets" required="false">
+        <propertyGroup caption="Data">
+            <property key="datasource" type="datasource" isList="true" required="true">
+                <caption>Nodes</caption>
+                <description>All nodes in the tree. The widget will build the tree client-side using the parent association.</description>
+            </property>
+            <property key="content" type="widgets" required="false" dataSource="datasource">
                 <caption>Content</caption>
-                <description>The widgets to render for each node in the tree. The context object is the current tree node.</description>
+                <description>Drop widgets here once. They will be rendered for every node in the tree.</description>
             </property>
-        </propertyGroup>
-        <propertyGroup caption="Child data">
-            <property key="childDataSource" type="datasource" isList="false" required="false">
-                <caption>Child object</caption>
-                <description>A datasource that resolves to the child object via a self-referencing association (e.g. TreeNode_Parent/TreeNode). Leave empty to stop recursion at this node.</description>
-            </property>
-            <property key="childContent" type="widgets" required="false" dataSource="childDataSource">
-                <caption>Child content</caption>
-                <description>Drop another Recursive Container here to render the child node. This slot is rendered in the context of the child object.</description>
+            <property key="parentAssociation" type="association" required="false" dataSource="datasource" selectableObjects="datasource">
+                <caption>Parent association</caption>
+                <description>The association that points to the parent of each node. Can be a direct self-referencing association (e.g. Node_Node) or a path through an intermediate entity. The widget uses this to build the tree client-side.</description>
+                <associationTypes>
+                    <associationType name="Reference" />
+                </associationTypes>
             </property>
         </propertyGroup>
         <propertyGroup caption="Safety">
             <property key="maxDepth" type="integer" defaultValue="25" required="true">
                 <caption>Max depth</caption>
-                <description>Maximum number of recursion levels to prevent infinite loops. Default is 25.</description>
+                <description>Maximum recursion depth to prevent infinite loops. Default is 25.</description>
             </property>
         </propertyGroup>
     </properties>

@@ -1,13 +1,8 @@
 import { createElement, ReactElement, ComponentType, ReactNode } from "react";
 import { RecursiveContainerPreviewProps } from "../typings/RecursiveContainerProps";
 
-export function preview({
-    content,
-    childDataSource,
-    childContent
-}: RecursiveContainerPreviewProps): ReactElement {
+export function preview({ content }: RecursiveContainerPreviewProps): ReactElement {
     const ContentRenderer = content.renderer as ComponentType<{ children: ReactNode }>;
-    const ChildContentRenderer = childContent.renderer as ComponentType<{ children: ReactNode }>;
 
     return (
         <div
@@ -23,47 +18,33 @@ export function preview({
                     fontSize: 11,
                     fontWeight: "bold",
                     color: "#666",
-                    marginBottom: 4
+                    marginBottom: 6
                 }}
             >
-                🔁 Recursive Container — Content
+                🔁 Recursive Container
             </div>
-
-            {/* Current node content drop zone */}
+            <div style={{ fontSize: 10, color: "#999", marginBottom: 6 }}>
+                Drop widgets here — rendered for every node in the tree
+            </div>
             <ContentRenderer>
-                <div style={{ minHeight: 24, color: "#999", fontSize: 11 }}>
-                    Drop content here (context: current node)
+                <div style={{ minHeight: 32, color: "#bbb", fontSize: 11, fontStyle: "italic" }}>
+                    Drop widgets here...
                 </div>
             </ContentRenderer>
-
-            {/* Child section */}
-            {childDataSource && (
-                <div
-                    style={{
-                        marginTop: 8,
-                        border: "1px dashed #c0c0c0",
-                        borderRadius: 3,
-                        padding: 6,
-                        background: "#f0f0f0"
-                    }}
-                >
-                    <div
-                        style={{
-                            fontSize: 11,
-                            fontWeight: "bold",
-                            color: "#888",
-                            marginBottom: 4
-                        }}
-                    >
-                        ↳ Child node (via association)
-                    </div>
-                    <ChildContentRenderer>
-                        <div style={{ minHeight: 24, color: "#aaa", fontSize: 11 }}>
-                            Drop a Recursive Container here for the child node
-                        </div>
-                    </ChildContentRenderer>
-                </div>
-            )}
+            {/* Visual hint of recursion */}
+            <div
+                style={{
+                    marginTop: 6,
+                    marginLeft: 16,
+                    border: "1px dashed #c8c8c8",
+                    borderRadius: 3,
+                    padding: "4px 8px",
+                    color: "#bbb",
+                    fontSize: 10
+                }}
+            >
+                ↳ children rendered here automatically
+            </div>
         </div>
     );
 }

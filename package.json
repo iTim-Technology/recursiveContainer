@@ -14,7 +14,7 @@
     "mendixHost": "http://localhost:8080",
     "developmentPort": 3000
   },
-  "packagePath": "itimtechnology",
+  "packagePath": "tech.itim",
   "scripts": {
     "start": "pluggable-widgets-tools start:server",
     "dev": "pluggable-widgets-tools start:web",
@@ -28,9 +28,7 @@
     "@mendix/pluggable-widgets-tools": "^11.3.1",
     "@types/big.js": "^6.0.2"
   },
-  "dependencies": {
-    "classnames": "^2.2.6"
-  },
+  "dependencies": {},
   "resolutions": {
     "react": "^18.2.0",
     "react-dom": "18.2.0",

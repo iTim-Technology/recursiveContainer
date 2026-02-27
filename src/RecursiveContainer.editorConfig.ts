@@ -130,13 +130,13 @@ export function check(values: RecursiveContainerPreviewProps): Problem[] {
 
 export function getPreview(
     values: RecursiveContainerPreviewProps,
-    _isDarkMode: boolean
+    isDarkMode: boolean
 ): PreviewProps {
     return {
         type: "Container",
         borders: true,
         borderRadius: 4,
-        backgroundColor: _isDarkMode ? "#2a2a2a" : "#f5f5f5",
+        backgroundColor: isDarkMode ? "#2a2a2a" : "#f5f5f5",
         padding: 8,
         children: [
             {
@@ -145,25 +145,26 @@ export function getPreview(
                 children: [
                     {
                         type: "Text",
-                        content: "🔁 Recursive Container",
+                        content: "Recursive Container",
                         bold: true,
-                        fontColor: _isDarkMode ? "#cccccc" : "#333333"
+                        fontColor: isDarkMode ? "#cccccc" : "#333333"
                     }
                 ]
             },
             {
-                type: "DropZone",
-                property: values.content as object,
-                placeholder: "Content — drop widgets here (rendered per node)"
-            },
-            {
                 type: "Datasource",
-                property: values.childDataSource as object | null,
+                property: values.datasource as object | null,
                 child: {
                     type: "DropZone",
-                    property: values.childContent as object,
-                    placeholder: "Child content — drop another Recursive Container here"
+                    property: values.content as object,
+                    placeholder: "Content — drop widgets here (rendered for every node in the tree)"
                 }
+            },
+            {
+                type: "Text",
+                content: "↳ children are rendered here automatically",
+                italic: true,
+                fontColor: isDarkMode ? "#888888" : "#aaaaaa"
             }
         ]
     };

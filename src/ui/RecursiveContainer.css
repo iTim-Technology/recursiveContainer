@@ -2,9 +2,8 @@
     position: relative;
 }
 
-.recursive-container__child {
-    /* Child nodes are rendered directly below parent content.
-       Override in your theme if you want indentation, connecting lines, etc. */
+.recursive-container__children {
+    padding-left: var(--recursive-container-children-spacing, 0);
 }
 
 .recursive-container__depth-warning {
