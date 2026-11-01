@@ -69,7 +69,7 @@ After adding this, a **Children spacing** toggle appears in the Design tab of th
 
 ## Issues, suggestions and feature requests
 
-[Open an issue on GitHub](https://github.com/tmisker/recursiveContainer/issues)
+[Open an issue on GitHub](https://github.com/iTim-Technology/recursiveContainer/issues)
 
 ## Development and contribution
 
